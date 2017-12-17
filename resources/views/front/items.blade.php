@@ -14,8 +14,17 @@
                 <li class="span3">
                     <div class="product-box">
                         <span class="sale_tag"></span>
-                        <a href={{'/item/'.$item->itemId}}><img alt="" src="{{asset('themes/images/ladies/9.jpg')}}"></a><br/>
-                        <a href={{'/item/'.$item->itemId}} class="title">{{$item->name}}</a><br/>
+                        @if ($item->type === 1)
+                            <p><a href={{'/item/'.$item->itemId}} ><img src="themes/images/iPhone.jpeg" alt="" /></a></p>
+
+                        @elseif ($item->type == 2)
+                            <p><a href={{'/item/'.$item->itemId}} ><img src="themes/images/chair.jpeg" alt="" /></a></p>
+                        @elseif ($item->type == 3)
+                            <p><a href={{'/item/'.$item->itemId}} ><img src="themes/images/top.jpeg" alt="" /></a></p>
+                        @else
+                            <p><a href={{'/item/'.$item->itemId}} ><img src="themes/images/food.jpg" alt="" /></a></p>
+                        @endif
+                       <a href={{'/item/'.$item->itemId}} class="title">{{$item->name}}</a><br/>
                         <a href={{'/item/'.$item->itemId}} class="category">{{$item->description}}</a>
                         <p class="price">${{$item->price}}</p>
                     </div>

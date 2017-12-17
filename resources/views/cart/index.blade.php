@@ -18,7 +18,6 @@
                     </tr>
                     </thead>
                     <tbody>
-
                     <?php  $total=0 ?>
                     @foreach($cartItems as $cartItem)
                     <tr>
@@ -26,7 +25,7 @@
                         <td>{{ $cartItem->itemInfo[0]->description}}</td>
                         <td>{{ $cartItem->itemInfo[0]->category->name}}</td>
                         <td>{{ $cartItem->quantity}}</td>
-                        <td>{{ $cartItem->itemInfo[0]->price}}</td>
+                        <td>${{ $cartItem->itemInfo[0]->price}}</td>
                         <?php $total=$total+($cartItem->itemInfo[0]->price*$cartItem->quantity)?>
                         <td><form  action = "{{'/cart/'.$cartItem->shoppingCartId}}" method="post">
                                 {{method_field('DELETE')}}
@@ -37,7 +36,8 @@
                         </td>
 
                     </tr>
-                        @endforeach
+                    @endforeach
+
                     </tbody>
                 </table>
 
@@ -49,7 +49,9 @@
                 <p class="buttons center">
                     <button class="btn" type="button">Update</button>
                     <button class="btn" type="button">Continue</button>
-                    <button class="btn btn-inverse" type="submit" id="checkout">Checkout</button>
+                    <a href="{{url('cashout')}}">
+                    <button class="btn btn-inverse"  type="submit" id="checkout">Checkout</button>
+                    </a>
                 </p>
             </div>
             <div class="span3 col">

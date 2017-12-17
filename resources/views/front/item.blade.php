@@ -14,6 +14,16 @@
 
                         <div class="span5">
                             <address>
+                                @if ($item->type === 1)
+                                    <p><a href={{'/item/'.$item['itemId']}} ><img src="themes/images/iPhone.jpeg" alt="" /></a></p>
+
+                                @elseif ($item->type == 2)
+                                    <p><a href={{'/item/'.$item['itemId']}} ><img src="themes/images/chair.jpeg" alt="" /></a></p>
+                                @elseif ($item->type == 3)
+                                    <p><a href={{'/item/'.$item['itemId']}} ><img src="themes/images/top.jpeg" alt="" /></a></p>
+                                @else
+                                    <p><a href={{'/item/'.$item['itemId']}} ><img src="themes/images/food.jpg" alt="" /></a></p>
+                                @endif
 
                                 <strong>Name:</strong> <span>{{$item->name}}</span><br>
                                 <strong>Description:</strong> <span>{{$item->description}}</span><br>

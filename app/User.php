@@ -34,5 +34,9 @@ class User extends Authenticatable
         return $this->customerId;
     }
 
+    public function payment(){
+        return $this->hasOne(Payment::class,'paymentId','customerId');
+    }
+
 
 }

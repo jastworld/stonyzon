@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
+use App\payment;
 
 class HomeController extends Controller
 {
@@ -24,7 +27,15 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        if (Auth::check())
+        {
+            $customerId = Auth::user()->getId();
+            $user = User::find($customerId);
+            //return $user;
+            $payment = Payment::find($customerId);
+
+            return view('home',compact('user', 'payment'));
+        }
     }
 
 }

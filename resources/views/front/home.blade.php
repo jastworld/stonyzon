@@ -19,8 +19,7 @@
         </div>
     </section>
     <section class="header_text">
-        We stand for top quality templates. Our genuine developers always optimized bootstrap commercial templates.
-        <br/>Don't miss to use our cheap abd best bootstrap templates.
+       This is the CSE 305 project for Team 4
     </section>
     <section class="main-content">
         <div class="row">
@@ -38,17 +37,31 @@
                             <div class="carousel-inner">
                                 <div class="active item">
                                     <ul class="thumbnails">
+                                        <?php $count=0?>
                                         @foreach($datas as $item)
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-                                                <p><a href={{'/item/'.$item['itemId']}} ><img src="themes/images/ladies/1.jpg" alt="" /></a></p>
+                                                @if ($item->type === 1)
+                                                    <p><a href={{'/item/'.$item['itemId']}} ><img src="themes/images/iPhone.jpeg" alt="" /></a></p>
+
+                                                @elseif ($item->type == 2)
+                                                    <p><a href={{'/item/'.$item['itemId']}} ><img src="themes/images/chair.jpeg" alt="" /></a></p>
+                                                @elseif ($item->type == 3)
+                                                    <p><a href={{'/item/'.$item['itemId']}} ><img src="themes/images/top.jpeg" alt="" /></a></p>
+                                                @else
+                                                    <p><a href={{'/item/'.$item['itemId']}} ><img src="themes/images/food.jpg" alt="" /></a></p>
+                                                @endif
                                                 <a href={{'/item/'.$item['itemId']}} class="title">{{$item['name']}}</a><br/>
                                                 <a href={{'/item/'.$item['itemId']}} class="category">{{$item['category']->name}}</a>
                                                 <p class="price">${{$item['price']}}</p>
 
                                             </div>
                                         </li>
+                                                <?php $count++?>
+                                            @if ($count== 4)
+                                                @break
+                                            @endif
                                         @endforeach
                                     </ul>
                                 </div>

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Item;
+
 use App\Inventory;
 use Illuminate\Http\Request;
+use App\Item;
+use App\ShoppingCart;
 
 use DB;
 use DateTime;
@@ -147,7 +149,12 @@ class ItemController extends Controller
     public function destroy($id)
     {
         $inventoryItem = Inventory::find($id);
+
         $inventoryItem->delete();
+        $item = Inventory::where('itemId',$inventoryItem->itemId);
+        $item->delete();
+        $shoppingcart = ShoppingCart::where('itemId',$inventoryItem->itemId);
+        $shoppingcart->delete();
 
         return redirect('/employee/viewall');
     }

@@ -30,6 +30,9 @@ Route::post('/cartId/{request}','ShoppingCartController@store');
 Route::get('employee/home','EmployeeController@index');
 
 
+Route::resource('cashout','CashoutController' );
+
+
 Route::get('employee','Employee\LoginController@showLoginForm')->name('employee.login');
 Route::post('employee','Employee\LoginController@login');
 Route::post('employee-password/email','Employee\ForgotPasswordController@sendResetLinkEmail')->name('employee.password.email');
